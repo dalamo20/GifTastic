@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var topics = ["coffee", "dogs", "cats", "nerds"]
+    var topics = ["coffee", "dogs", "cats", "nerds", "simpsons", "family guy", "chuck norris", "batman", "pokemon", "dbz"]
 
     var API_KEY = "LZIwckN56pSuLgxseZy0SZbHTjDPEfzg";
     var requestUrl = "https://api.giphy.com/v1/gifs/search?api_key=" + API_KEY + "&rating&limit=10&q=";
@@ -17,8 +17,8 @@ $(document).ready(function () {
             }).then(function (response) {
                 console.log(response.data);
                 for (var i = 0; i < response.data.length; i++) {
-                    var img = createImage(response);
-                    // img.attr("data-rating"), response.data[i].rating);
+                    var img = createImage(response, i);
+ 
 
                     //BONUS: Try to make an event handlerfor all img's
                     //FIX: Images should start still    
@@ -47,14 +47,22 @@ $(document).ready(function () {
         });
         $("#buttons").append(button);
     }
-    function createImage(response) {
+    function createImage(response, i) {
         var img = $("<img>");
         // set the src of the element
-        img.attr("src", response.data[i].images.downsized.url);
+        img.attr("src", response.data[i].images.downsized_still.url);
         img.attr("data-animated", response.data[i].images.downsized.url);
         img.attr("data-still", response.data[i].images.downsized_still.url);
         img.attr("data-state", "animated");
 
-        return img;
+        var gifCard = $("<div class='gif-card'>");
+        var rating = $("<p>");
+
+        gifCard.append(img);
+        rating.append("Rating: " + response.data[i].rating);
+        console.log(response.data[i].rating);
+        gifCard.append(rating);
+
+        return gifCard;
     };
 });

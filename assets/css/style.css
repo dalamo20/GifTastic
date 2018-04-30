@@ -1,0 +1,11 @@
+button {
+    margin-right: 5px;
+}
+.gif-card {
+    float: left;
+    margin-right: 5px;
+}
+img {
+    width: 200px;
+    height: 200px;
+}
