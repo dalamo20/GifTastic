@@ -1,3 +1,8 @@
+//Captains Log: Lines 52-67 I commented out some possible ways I was trying to get user input to display 
+//a new button but got stuck along the way. I was unable to do the bonus. I would like to learn how to 
+//get the user input to appear as a new button. 
+
+
 $(document).ready(function () {
     var topics = ["coffee", "dogs", "cats", "nerds", "simpsons", "family guy", "chuck norris", "batman", "pokemon", "dbz"]
 
@@ -18,7 +23,8 @@ $(document).ready(function () {
                 console.log(response.data);
                 for (var i = 0; i < response.data.length; i++) {
                     var img = createImage(response, i);
- 
+
+
 
                     //BONUS: Try to make an event handlerfor all img's
                     //FIX: Images should start still    
@@ -41,12 +47,32 @@ $(document).ready(function () {
                         }
                     });
 
+
                     $("#gifs").append(img);
                 }
             });
+            //Get user input to create new Gif button
+            // $(function () {
+            //     var newForm = $("#search-form");
+            //     var userInput = $("#user-input");
+
+            //     newForm.on("click", function (event)) {
+            //         var userText = userInput.val();
+            //         userText.addClass("btn btn-info");
+            //         userInput.val('');
+            //     };
+            // }  
+            //or maybe this will add userinput into a new button
+            // $("#submit").on("click", function (event) {
+            //     event.preventDefault();
+
+            // })
+
         });
         $("#buttons").append(button);
+
     }
+
     function createImage(response, i) {
         var img = $("<img>");
         // set the src of the element
